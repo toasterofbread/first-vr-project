@@ -1,0 +1,162 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "ARVRController",
+"class": "Controller",
+"language": "GDScript",
+"path": "res://scenes/controller/controller.gd"
+}, {
+"base": "Reference",
+"class": "ExArray",
+"language": "GDScript",
+"path": "res://addons/Godot-Utilities/Classes/ExArray.gd"
+}, {
+"base": "BoneAttachment",
+"class": "ExBoneAttachment",
+"language": "GDScript",
+"path": "res://addons/Godot-Utilities/Nodes/ExBoneAttachment.gd"
+}, {
+"base": "ImageTexture",
+"class": "ExTexture",
+"language": "GDScript",
+"path": "res://addons/Godot-Utilities/Classes/ExTexture.gd"
+}, {
+"base": "RigidBody",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://scenes/game_objects/game_object.gd"
+}, {
+"base": "Area",
+"class": "GameObjectGrabPoint",
+"language": "GDScript",
+"path": "res://scenes/game_objects/game_object_grab_point.gd"
+}, {
+"base": "GameObject",
+"class": "GameObjectGrabbable",
+"language": "GDScript",
+"path": "res://scenes/game_objects/game_object_grabbable.gd"
+}, {
+"base": "Skeleton",
+"class": "HandAnimator",
+"language": "GDScript",
+"path": "res://scripts/hand_animator.gd"
+}, {
+"base": "NinePatchRect",
+"class": "NinePatchRectTextureButton",
+"language": "GDScript",
+"path": "res://addons/Godot-Utilities/Nodes/NinePatchRectTextureButton.gd"
+}, {
+"base": "Node",
+"class": "NodeHolder",
+"language": "GDScript",
+"path": "res://addons/Godot-Utilities/Nodes/NodeHolder.gd"
+}, {
+"base": "OculusTracker",
+"class": "OculusHandTracker",
+"language": "GDScript",
+"path": "res://EXAMPLE/oculus_hand_tracker.gd"
+}, {
+"base": "OculusTracker",
+"class": "OculusTouchController",
+"language": "GDScript",
+"path": "res://EXAMPLE/oculus_touch_controller.gd"
+}, {
+"base": "ARVRController",
+"class": "OculusTracker",
+"language": "GDScript",
+"path": "res://EXAMPLE/oculus_tracker.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/player-physical/player.gd"
+}, {
+"base": "Area",
+"class": "XRToolsInteractableArea",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Interactable_area.gd"
+}, {
+"base": "PhysicsBody",
+"class": "XRToolsInteractableBody",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Interactable_body.gd"
+}, {
+"base": "RigidBody",
+"class": "XRToolsPickable",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Object_pickable.gd"
+} ]
+_global_script_class_icons={
+"Controller": "",
+"ExArray": "",
+"ExBoneAttachment": "",
+"ExTexture": "",
+"GameObject": "",
+"GameObjectGrabPoint": "",
+"GameObjectGrabbable": "",
+"HandAnimator": "",
+"NinePatchRectTextureButton": "",
+"NodeHolder": "",
+"OculusHandTracker": "",
+"OculusTouchController": "",
+"OculusTracker": "",
+"Player": "",
+"XRToolsInteractableArea": "",
+"XRToolsInteractableBody": "",
+"XRToolsPickable": ""
+}
+
+[application]
+
+config/name="Godot VR"
+run/main_scene="res://Test.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Utils="*res://addons/Godot-Utilities/Utils.gd"
+Enums="*res://scripts/autoload/Enums.gd"
+
+[debug]
+
+settings/fps/force_fps=75
+gdscript/warnings/return_value_discarded=false
+shapes/collision/max_contacts_displayed=0
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/Godot-Utilities/plugin.cfg", "res://addons/follow_bone_3d/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="World"
+3d_physics/layer_3="GameObjects"
+3d_physics/layer_4="GameObjectGrabPoints"
+
+[physics]
+
+common/physics_fps=75
+3d/physics_engine="Bullet"
+3d/godot_physics/use_bvh=false
+common/enable_object_picking=false
+
+[rendering]
+
+vram_compression/import_etc=true
+quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=6
+quality/filters/use_debanding=true
+environment/default_environment="res://default_env.tres"
