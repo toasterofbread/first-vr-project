@@ -2,8 +2,8 @@ tool
 extends ControllerVisual
 
 var models: Dictionary = {
-	Controller.SIDE.LEFT: preload("res://models/touch_controller/TouchControllerLeft.tscn"),
-	Controller.SIDE.RIGHT: preload("res://models/touch_controller/TouchControllerRight.tscn")
+	Enums.SIDE.LEFT: preload("res://models/touch_controller/TouchControllerLeft.tscn"),
+	Enums.SIDE.RIGHT: preload("res://models/touch_controller/TouchControllerRight.tscn")
 }
 
 # Constants
@@ -47,7 +47,7 @@ func update_buttons():
 		stick.rotation_degrees.z = JOY_PRESSED * controller.get_joystick_axis(Enums.CONTROLLER_AXIS.JOYSTICK_X)
 		
 		# Flip for right
-		if controller.side == Controller.SIDE.RIGHT:
+		if controller.side == Enums.SIDE.RIGHT:
 			grip.transform.origin.x *= -1
 			trigger.rotation_degrees.x *= -1
 			stick.rotation_degrees.x *= -1
@@ -63,7 +63,7 @@ func controller_button_pressed(button: int):
 			btn_menu.transform.origin.y = MENU_PRESSED
 		Enums.CONTROLLER_BUTTON.STICK:
 			stick.transform.origin.y = STICK_PRESSED
-			if controller.side == Controller.SIDE.RIGHT:
+			if controller.side == Enums.SIDE.RIGHT:
 				stick.transform.origin.y -= 0.0005
 	
 
@@ -77,7 +77,7 @@ func controller_button_released(button: int):
 			btn_menu.transform.origin.y = 0.0
 		Enums.CONTROLLER_BUTTON.STICK:
 			stick.transform.origin.y = STICK_UNPRESSED
-			if controller.side == Controller.SIDE.RIGHT:
+			if controller.side == Enums.SIDE.RIGHT:
 				stick.transform.origin.y -= 0.0005
 
 func get_model_instance(side: int) -> Spatial:

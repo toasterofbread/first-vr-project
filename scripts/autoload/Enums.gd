@@ -28,4 +28,5 @@ enum CONTROLLER_BUTTON {
 	
 	INDEX_TRIGGER = 15, # index trigger pressed over threshold
 }
+enum SIDE {LEFT, RIGHT}
 enum DAMAGE_TYPE {BULLET, HIT, CUT}

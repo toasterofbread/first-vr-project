@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 [node name="ARVROrigin" type="ARVROrigin" parent="."]
 
 [node name="ARVRCamera" type="ARVRCamera" parent="ARVROrigin"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236557, 0.0108844, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.161269, 0.00797055, 0 )
 
 [node name="ControllerLeft" parent="ARVROrigin" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214297, 0, 0 )

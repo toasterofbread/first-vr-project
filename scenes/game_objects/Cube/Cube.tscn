@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/game_objects/game_object_grabbable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game_objects/game_object_grab_point.gd" type="Script" id=2]
+[ext_resource path="res://models/companion_cube/model.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.05, 0.05, 0.05 )
+
+[node name="Cube" type="RigidBody"]
+collision_layer = 4
+collision_mask = 0
+mass = 5.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="GameObjectGrabPoint" type="Area" parent="."]
+script = ExtResource( 2 )
+hand_position_id = "cube_grip"
+hand_animation_id = "cube_grip"
+grab_thresholds = {
+0: -1,
+1: 0.7,
+2: 0.7,
+3: 0.7,
+4: 0.7
+}
+
+[node name="MeshInstance" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )

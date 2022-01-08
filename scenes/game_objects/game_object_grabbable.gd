@@ -6,6 +6,7 @@ signal point_released(controller, point)
 
 # Nodes
 export(Array, NodePath) var grab_point_containers: Array = []
+export(Array, NodePath) var siblings: Array = []
 var collision_shapes: Dictionary = {}
 
 # Constants
@@ -49,37 +50,25 @@ func _ready():
 		for node in get_node(nodepath).get_children():
 			if node is GameObjectGrabPoint:
 				grab_points[node] = null
-				node.host_object = self
+				if not node.has_node(node.host_object_override):
+					node.host_object = self
 				node.connect("grabbed", self, "point_grabbed", [node])
 				node.connect("released", self, "point_released", [node])
+	
+	# Register siblings
+	for i in len(siblings):
+		siblings[i] = get_node(siblings[i])
 	
 	# Register CollisionShapes and CollisionPolygons
 	for node in get_children():
 		if node is CollisionShape or node is CollisionPolygon:
 			collision_shapes[node] = node.transform
 
+
 # Called when a GrabPoint of this object is grabbed
 func point_grabbed(controller, point):
 	grabbed = true
 	grab_points[point] = controller
-	
-	# Disable rigidbody physics
-	collision_layer = 0
-	collision_mask = 0
-	mode = MODE_STATIC
-	
-	# Make the controller the parent of self
-	Utils.reparent_node(self, controller.hand_rigidbody)
-	
-	translation = point.hand_transform.inverse().origin * scale
-	rotation = point.hand_transform.basis.get_euler()
-	
-	for collisionshape in collision_shapes:
-		var position: Vector3 = to_local(collisionshape.global_transform.origin)
-		Utils.reparent_node(collisionshape, controller.hand_rigidbody)
-		collisionshape.global_transform.origin = to_global(position)
-		collisionshape.rotation += rotation
-	
 	emit_signal("point_grabbed", controller, point)
 
 # Called when a GrabPoint of this object is released
@@ -93,25 +82,8 @@ func point_released(controller, point):
 			grabbed = true
 			break
 	
-	# Re-enable collision and rigidbody physics
-	collision_layer = original_data["collision_layer"]
-	collision_mask = original_data["collision_mask"]
-	mode = MODE_RIGID
-	
-	# Apply the monitored velocity to the rigidbody physics
-#	linear_velocity = monitored_velocity_linear * 30
-#	angular_velocity = monitored_velocity_angular * 30
-	linear_velocity = controller.hand_rigidbody.linear_velocity
-	angular_velocity = controller.hand_rigidbody.angular_velocity
-	
-	for collisionshape in collision_shapes:
-		Utils.reparent_node(collisionshape, self)
-		collisionshape.transform = collision_shapes[collisionshape]
-	
-	# Return to original parent
-	var transform: Transform = global_transform
-	Utils.reparent_node(self, original_data["parent"])
-	global_transform = transform
+	controller.hand_joint.set_node_a(null)
+	controller.hand_joint.set_node_b(null)
 	
 	# Add a brief collision exception for this object to the hand
 	controller.hand_rigidbody.add_collision_exception_with(self)

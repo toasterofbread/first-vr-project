@@ -36,7 +36,6 @@ export var reset_to_right_default: bool = false setget ex_reset_right
 export var undo: bool = false setget ex_undo
 export var export_animations: bool = false setget ex_export
 export var export_name: String
-export(SIDE) var export_side: int
 
 func ex_export(value: bool):
 	if not value:
@@ -53,7 +52,7 @@ func ex_export(value: bool):
 	
 	# Ensure save directory exists
 	var dir: Directory = Directory.new()
-	var path: String = animation_export_path.plus_file(export_name).plus_file("left" if export_side == SIDE.LEFT else "right")
+	var path: String = animation_export_path.plus_file(export_name)
 	if not dir.dir_exists(path):
 		dir.make_dir_recursive(path)
 	dir = null
