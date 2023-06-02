@@ -1,0 +1,11 @@
+Model Information:
+* title:	metroid-prime-75-ending
+* source:	https://sketchfab.com/3d-models/metroid-prime-75-ending-c60a55f537054d03a1fe9271ff6a1290
+* author:	spencer.psi0918 (https://sketchfab.com/spencer.psi0918)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "metroid-prime-75-ending" (https://sketchfab.com/3d-models/metroid-prime-75-ending-c60a55f537054d03a1fe9271ff6a1290) by spencer.psi0918 (https://sketchfab.com/spencer.psi0918) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

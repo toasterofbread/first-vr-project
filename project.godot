@@ -140,7 +140,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot VR"
+config/name="Prime VR"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
@@ -172,13 +172,16 @@ singletons=[ "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
 3d_physics/layer_4="GameObjectGrabPoints"
 3d_physics/layer_5="GUIPanels"
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [physics]
 
+3d/smooth_trimesh_collision=true
 common/physics_fps=75
 3d/physics_engine="Bullet"
 3d/godot_physics/use_bvh=false
-common/enable_object_picking=false
-3d/smooth_trimesh_collision=true
 
 [rendering]
 

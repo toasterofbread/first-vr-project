@@ -21,15 +21,6 @@ transform = Transform( 0.576828, 0.703767, 0.414707, -0.571417, 0.710431, -0.410
 
 [node name="Cube" parent="." instance=ExtResource( 3 )]
 
-[node name="GameObjectGrabPoint" parent="Cube" index="1"]
-grab_thresholds = {
-0: -1,
-1: 0.7,
-2: 0.7,
-3: 0.7,
-4: 0.7
-}
-
 [node name="VRGUIPanel" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.0357716, 0, 0.99936, 0, 1, 0, -0.99936, 0, 0.0357716, -3.91649, 0, -0.647852 )
 packed_scene = ExtResource( 5 )

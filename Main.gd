@@ -17,10 +17,10 @@ func _ready():
 	interface = ARVRServer.find_interface("OVRMobile")
 	if interface:
 		
-		ovr_init_config = preload("res://addons/godot_ovrmobile/OvrInitConfig.gdns").new()
-		ovr_performance = preload("res://addons/godot_ovrmobile/OvrPerformance.gdns").new()
-		
-		ovr_init_config.set_render_target_size_multiplier(1)
+#		ovr_init_config = preload("res://addons/godot_ovrmobile/OvrInitConfig.gdns").new()
+#		ovr_performance = preload("res://addons/godot_ovrmobile/OvrPerformance.gdns").new()
+#
+#		ovr_init_config.set_render_target_size_multiplier(1)
 		
 		if interface.initialize():
 			get_viewport().arvr = true
